@@ -1,4 +1,5 @@
 fn main() {
-    let constant = 42;
-    assert_eq!(constant, 40, "Values unequal, panicking!")
+    for i in 0..10 {
+        println!("Count {}", i)
+    }
 }
