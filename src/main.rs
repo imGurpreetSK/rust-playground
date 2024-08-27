@@ -1,10 +1,15 @@
 fn main() {
-    // Arrays are always homogenous.
+    // Rust does *not* have try..catch.
+    // It does have _Optional_ values.
+
     let array: [i32; 7] = [1, 2, 3, 4, 5, 6, 7];
-    let slice1: &[i32] = &array[0..2];
-    let slice2: &[i32] = &array[2..7];
+
+    let first: Option<&i32> = array.get(0);
+    let last: Option<&i32> = array.get(6);
+    let invalid: Option<&i32> = array.get(11);
 
     println!("array is {:?}", array);
-    println!("slice1 is {:?}", slice1); // Slices are *always* borrowed. A copy is never made.
-    println!("slice2 is {:?}", slice2) // Very intimate relationship with arrays.
+    println!("First: {}, {}", first.is_some(), first.unwrap());
+    println!("Last: {}, {}", last.is_some(), last.unwrap());
+    println!("Invalid: {}, {}", invalid.is_some(), invalid.unwrap_or(&0)); // invalid's value is None; panics!
 }
