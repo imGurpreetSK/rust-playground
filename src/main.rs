@@ -9,7 +9,7 @@ fn main() {
     let invalid: Option<&i32> = array.get(11);
 
     println!("array is {:?}", array);
-    println!("First: {}, {}", first.is_some(), first.unwrap());
-    println!("Last: {}, {}", last.is_some(), last.unwrap());
-    println!("Invalid: {}, {}", invalid.is_some(), invalid.unwrap_or(&0)); // invalid's value is None; panics!
+    println!("First: {}, {}", first.is_some(), *first.unwrap());
+    println!("Last: {}, {}", last.is_some(), *last.unwrap());
+    println!("Invalid: {}, {}", invalid.is_some(), *invalid.unwrap_or(&0)); // invalid's value is None; panics!
 }
