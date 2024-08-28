@@ -1,8 +1,10 @@
 fn main() {
-    let mut vec = Vec::new();
-    vec.push(1);
-    vec.push(2);
-    vec.push(3);
+    let mut v1 = vec![1, 2, 3, 4];
+    v1.pop();
+    v1.push(11);
 
-    println!("{:?}", vec.get(1));
+    let mut v2 = vec![9, 8, 7];
+    v2.extend(5..7);
+
+    println!("{:?} {:?}", v1, v2)
 }
