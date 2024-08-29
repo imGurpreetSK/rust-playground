@@ -1,10 +1,25 @@
+fn dump(s: &str) {
+    println!("str '{}'", s);
+}
+
+// Read: https://stevedonovan.github.io/rust-gentle-intro/1-basics.html#strings
 fn main() {
-    let mut v1 = vec![1, 2, 3, 4];
-    v1.pop();
-    v1.push(11);
+    let text = "hello dolly";  // the string slice
+    let s = text.to_string();  // it's now an allocated string
+    let _string = String::new();
 
-    let mut v2 = vec![9, 8, 7];
-    v2.extend(5..7);
+    dump(text);
+    dump(&s);
 
-    println!("{:?} {:?}", v1, v2)
+    let text = "the red fox and the lazy dog";
+    let output: String = text.chars()
+        .filter(|x| { !x.is_whitespace() })
+        .collect();
+    println!("{output}");
+
+    for i in text.chars() {
+        if !i.is_whitespace() {
+            print!("{i}");
+        }
+    }
 }
