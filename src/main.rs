@@ -1,6 +1,27 @@
 fn main() {
-    // Don't get comfortable with panic.
-    let arg = std::env::args().nth(1).expect("no arguments supplied");
-    let i = arg.parse::<i32>().expect("not an integer!");
-    println!("{i}")
+    // https://stevedonovan.github.io/rust-gentle-intro/1-basics.html#matching
+    let multilingual = "Hi! ¡Hola! привет!";
+
+    match multilingual.find("п") {
+        None => { println!("Couldn't find the greeting; Hello!") }
+        Some(index) => {
+            let hi = &multilingual[index..];
+            println!("Russian hi: {}", hi)
+        }
+    }
+
+    // If only interested in one of the possible results.
+    if let Some (index) = multilingual.find("п") {
+        println!("Russian hi: {}", &multilingual[index..])
+    }
+
+    let n = 8;
+    println!(
+        "{}",
+        match n {
+            0..=3 => "small",
+            4..=6 => "medium",
+            _ => "large"
+        }
+    )
 }
