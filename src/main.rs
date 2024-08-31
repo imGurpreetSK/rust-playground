@@ -2,12 +2,14 @@ fn main() {
     let person = Person::new("Gurpreet", "Singh");
     println!("{}", person.full_name());
 
+    println!("{:?}", person);
+
     let mut new = person.copy();
     new.set_first_name("Swaran");
 
     let t = new.to_tuple();
     println!("{} {}", t.0, t.1);
-    println!("{} {}", new.first_name, new.last_name) // Value has moved; error.
+    // println!("{} {}", new.first_name, new.last_name) // Value has moved; error.
 }
 
 /*
@@ -17,13 +19,13 @@ fn main() {
     - self argument: will consume the value, which will move.
 */
 
+#[derive(Debug)]
 struct Person {
     first_name: String,
     last_name: String,
 }
 
 impl Person {
-
     fn new(first: &str, last: &str) -> Person {
         Person {
             first_name: first.to_string(),
