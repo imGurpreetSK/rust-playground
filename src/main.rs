@@ -1,6 +1,6 @@
 fn main() {
     let person = Person::new("Gurpreet", "Singh");
-    println!("{} {}", person.first_name, person.last_name)
+    println!("{}", person.full_name())
 }
 
 struct Person {
@@ -9,10 +9,15 @@ struct Person {
 }
 
 impl Person {
+
     fn new(first: &str, last: &str) -> Person {
         Person {
             first_name: first.to_string(),
             last_name: last.to_string(),
         }
+    }
+
+    fn full_name(&self) -> String {
+        format!("{} {}", self.first_name, self.last_name)
     }
 }
