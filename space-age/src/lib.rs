@@ -16,52 +16,22 @@ pub trait Planet {
     }
 }
 
-pub struct Mercury;
-pub struct Venus;
-pub struct Earth;
-pub struct Mars;
-pub struct Jupiter;
-pub struct Saturn;
-pub struct Uranus;
-pub struct Neptune;
+macro_rules! planet {
+    ($planet:ident, $period:expr) => {
+        pub struct $planet;
+        impl Planet for $planet {
+            fn orbital_period() -> f64 {
+                $period
+            }
+        }
+    };
+}
 
-impl Planet for Mercury {
-    fn orbital_period() -> f64 {
-        0.2408467
-    }
-}
-impl Planet for Venus {
-    fn orbital_period() -> f64 {
-        0.61519726
-    }
-}
-impl Planet for Earth {
-    fn orbital_period() -> f64 {
-        1.0
-    }
-}
-impl Planet for Mars {
-    fn orbital_period() -> f64 {
-        1.8808158
-    }
-}
-impl Planet for Jupiter {
-    fn orbital_period() -> f64 {
-        11.862615
-    }
-}
-impl Planet for Saturn {
-    fn orbital_period() -> f64 {
-        29.447498
-    }
-}
-impl Planet for Uranus {
-    fn orbital_period() -> f64 {
-        84.016846
-    }
-}
-impl Planet for Neptune {
-    fn orbital_period() -> f64 {
-        164.79132
-    }
-}
+planet!(Mercury, 0.2408467);
+planet!(Venus, 0.61519726);
+planet!(Earth, 1.0);
+planet!(Mars, 1.8808158);
+planet!(Jupiter, 11.862615);
+planet!(Saturn, 29.447498);
+planet!(Uranus, 84.016846);
+planet!(Neptune, 164.79132);
