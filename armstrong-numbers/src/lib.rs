@@ -1,0 +1,8 @@
+pub fn is_armstrong_number(num: u32) -> bool {
+    let string = num.to_string();
+    let power = string.len() as u32;
+    string.chars()
+        .rev()
+        .map(|x| { x.to_digit(10).unwrap() })
+        .fold(0, |acc, item| { acc + item.pow(power) }) == num
+}
